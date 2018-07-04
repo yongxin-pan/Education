@@ -1,22 +1,35 @@
-#iterative
-(define (+ a b)
-    (if(= a 0)
-        b
-	(+ (dec a) (inc b))))
-#iterative compuationg process	
+#Linear iterative
+
+```
+	(define (+ a b)
+	    (if(= a 0)
+	        b
+		(+ (dec a) (inc b))))
+```
+
+iterative compuationg process
+
+```	
 (+ 4 5)
 (+ 3 6)
 (+ 2 7)
 (+ 1 8)
 (+ 0 9)
 9
+```
 
 #linear recursive
-(define (+ a b)
-    (if(= a 0)
-        b
-	(inc (+ (dec a) b))))
-#recursive computation process
+
+```
+	(define (+ a b)
+	    (if(= a 0)
+	        b
+		(inc (+ (dec a) b))))
+```
+
+recursive computation process
+
+```
 (+ 4 5)
 (inc(+ 3 5))
 (inc(inc(+ 2 5)))
@@ -27,4 +40,6 @@
 (inc(inc(7)))
 (inc(8))
 (9)
+```
+
 
