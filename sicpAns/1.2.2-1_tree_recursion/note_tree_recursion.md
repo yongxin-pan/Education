@@ -74,36 +74,79 @@ First, we need to define a collection to represent (1 5 10 25 50):
     ((= n 4) 25)
     ((= n 5) 50)))	
 ```
-
+---
 # Question
 Exercise 1.11.  A function f is defined by the rule that f(n) = n if n<3 and f(n) = f(n - 1) + 2f(n - 2) + 3f(n - 3) if n> 3. Write a procedure that computes f by means of a recursive process. Write a procedure that computes f by means of an iterative process
 
 # Answer
 ## Recursive process
 ### Codes
-
-``` 
+```scheme
 (define (f n)
     (if(< n 3)
        n
-       (+ (f (- n 1)) (* 2 (f (- n 2))) (* 3 (f (- n 3))))))
+       (+ (f (- n 1)) 
+          (* 2 (f (- n 2)))
+          (* 3 (f (- n 3))))))
 ```
 ## Iterative process
-
-```
+```scheme
 (define (f n)
-   (if(< n 4)
+   (if(< n 3)
       n
-      (fi 3 2 1 n)))
+      (fi 2 1 0 n)))
 
 (define (fi a b c k)
-  (if(< k 4)
+  (if(< k 3)
      a
-     (fi (+ a (* 2 b) (* 3 c)) b c (- k 1))))
-	 
-f(4) = 10
-f(5) = 17
+     (fi (+ a
+           (* 2 b)
+           (* 3 c))
+         a 
+         b
+         (- k 1))))
+```
+## Runtime
+### f(3)
+
+```
+1.   f(3)
+2.   (fi (+ 2 (*2 1) (* 3 0))
+        2 
+        1 
+        (- 3 1))
+3.   (fi 4 2 1 2)
+4.   (4)
 ```
 
-              
-              
+### f(4)
+
+```
+1.   f(4)
+2.   (fi (+ 2 2*1 3*0) 2 1 3)
+3.   (fi 4 2 1 3)
+4.   (fi (+ 4 2*2 3*1) 4 2 2)
+5.   (fi 11 4 2 2)
+4.   (11)
+```
+
+---
+## Pascal Triangle
+**recursive procedure**
+
+```              
+(define (pascal n j) 
+    (if (or (= j n) (= j 1))
+       1
+       (+ (pascal (- n 1) (- j 1))
+          (pascal (- n 1) j))))
+```  
+### Runtime  
+_**recursive process**_
+
+    (pascal 4 2)
+    (+ (pascal 3 1) (pascal 3 2))
+    (+ (pascal 3 1) (+ (pascal 2 1) (pascal 2 2)))    
+    (+ 1 (+ 1 1))
+    (3)
+    
