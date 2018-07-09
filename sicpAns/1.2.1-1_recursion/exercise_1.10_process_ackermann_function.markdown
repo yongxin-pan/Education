@@ -1,4 +1,5 @@
 #Exercise 1.10  
+
 following procedure computes a mathematical
 function called Ackermann’s function.
 
@@ -57,4 +58,13 @@ A(2 4)
 2*16
 ```
 
+#More practice
 
+Consider the following procedures, where A is the proce- dure defined above:
+
+	(define (f n) (A 0 n))       f(n) = 2*n
+	(define (g n) (A 1 n)) 		  g(n) = (A 0 (A 1 (- n 1))) = 2^n
+	(define (h n) (A 2 n))       h(n) = (A 1 (A 2 (- n 1))) = (A 1 (A 1 (
+	A 2 (- n 2)))) = (A 1 (A 1 (......(A 1 (A 2 1)))))) = (A 1 (.....(A 1 2))) = (A 1 (......(A)))
+	(define (k n) (A 3 n))       k(n) = (A 2 A(3 (- n 1))) = (A 2 A(2 (A 3 (- n 2)))) = (A 2 A(2 ... (A 3 1))) = (A 2 A(2 ...A(2 2)))) = 2   2^4
+	                                                     n-1
