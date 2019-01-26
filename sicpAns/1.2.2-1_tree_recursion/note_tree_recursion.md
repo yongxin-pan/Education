@@ -140,7 +140,7 @@ Exercise 1.11.  A function f is defined by the rule that f(n) = n if n<3 and f(n
        1
        (+ (pascal (- n 1) (- j 1))
           (pascal (- n 1) j))))
-```  
+```
 ### Runtime  
 _**recursive process**_
 
@@ -149,4 +149,3 @@ _**recursive process**_
     (+ (pascal 3 1) (+ (pascal 2 1) (pascal 2 2)))    
     (+ 1 (+ 1 1))
     (3)
-    

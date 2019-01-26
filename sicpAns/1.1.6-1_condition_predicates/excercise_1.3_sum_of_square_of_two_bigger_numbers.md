@@ -16,3 +16,5 @@ Exercise 1.3: Define a procedure that takes three numbers as arguments and retur
 
 output: 41
 
+
+
