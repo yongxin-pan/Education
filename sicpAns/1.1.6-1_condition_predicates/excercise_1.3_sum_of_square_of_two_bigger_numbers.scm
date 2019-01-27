@@ -1,13 +1,20 @@
 #lang sicp
 
-(define (square x) (* x x))
-
-(define (max x y)
-         (cond ((> x y) x)
-                (else y)))
-(define (min x y) (if(> x y) x y))
-
-(define (sqrsum_of_bigtwo x y z) 
-        (+ (square (max x y)) (square (max (min x y) z))))
-
-(sqrsum_of_bigtwo 3 4 5)
+(define (average x y)
+  (/ (+ x y) 2))
+(define (improve guess x)
+  (average guess (/ x guess)))
+(define (square x)
+  (* x x))
+(define (abs x)
+  (if (> x 0)
+      x
+      (- x)))
+(define (good-enough? guess x)
+  (< (abs (- (square guess) x)) 0.001))
+(define (sqrt x)
+  (sqrt-iter 1.0 x))
+(define (sqrt-iter guess x)
+  (if (good-enough? guess x)
+      guess
+      (sqrt-iter (improve guess x) x)))
